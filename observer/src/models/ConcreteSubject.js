@@ -1,0 +1,36 @@
+"use strict";
+exports.__esModule = true;
+exports.ConcreteSubject = void 0;
+var ConcreteSubject = /** @class */ (function () {
+    function ConcreteSubject() {
+        this.observers = [];
+    }
+    ConcreteSubject.prototype.attach = function (observer) {
+        var isExist = this.observers.includes(observer);
+        if (isExist)
+            console.log('Subject: Observer has been attached already.');
+        console.log('Subject: Attached an observer');
+        this.observers.push(observer);
+    };
+    ConcreteSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1)
+            console.log('Subject: Nonexistent observer');
+        this.observers.splice(observerIndex, 1);
+        console.log('Subject: Detached an observer');
+    };
+    ConcreteSubject.prototype.notify = function () {
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.update(this);
+        }
+    };
+    ConcreteSubject.prototype.someBusinessLogic = function () {
+        console.log('\nSubject: I\'m doing something important.');
+        this.state = Math.floor(Math.random() * (10 + 1));
+        console.log("Subject: My state has just changed to: " + this.state);
+        this.notify();
+    };
+    return ConcreteSubject;
+}());
+exports.ConcreteSubject = ConcreteSubject;
