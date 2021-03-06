@@ -1,0 +1,12 @@
+"use strict";
+exports.__esModule = true;
+exports.Car = void 0;
+var Car = /** @class */ (function () {
+    function Car() {
+    }
+    Car.prototype.getDescription = function () {
+        return this.description;
+    };
+    return Car;
+}());
+exports.Car = Car;
